@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,11 @@ namespace Snackable.PresentationApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SnackableDbContext>(opt => opt.UseInMemoryDatabase(SnackableDbContext.DbName));
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(opts =>
+            {
+                var enumConverter = new JsonStringEnumConverter();
+                opts.JsonSerializerOptions.Converters.Add(enumConverter);
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Snackable.PresentationApi", Version = "v1"});

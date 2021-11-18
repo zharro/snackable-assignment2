@@ -1,5 +1,10 @@
 # Practical assignment
 
+## How to run
+* .NET runtime 5+ need to be installed. You can take it here https://dotnet.microsoft.com/download/dotnet/5.0.
+* Navigate to `Snackable\Snackable.PresentationApi` directory in the solution and execute `dotnet run` - it will build the project and run it
+* By default the app is listening ports 5000 and 5001, so you can find Swagger at https://localhost:5001/swagger/index.html
+
 ## Solution overview
 * Presentation API - `FilesController.cs`
 * Processing API gateway - `IProcessingApiClient.cs`
